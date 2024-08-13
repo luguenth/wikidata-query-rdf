@@ -237,6 +237,7 @@ public class WikibaseRepository implements Closeable {
             throws RetryableException {
         URI uri = uris.recentChanges(nextStartTime, lastContinue, batchSize);
         LOG.debug("Polling for changes from {}", uri);
+        LOG.info("Polling for changes from {}", uri);
         HttpGet request = new HttpGet(uri);
         try {
             return checkApi(getJson(request, RecentChangeResponse.class));
